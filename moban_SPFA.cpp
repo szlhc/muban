@@ -7,15 +7,11 @@ const int N = 10005;
 int n, m;
 struct node {
 	int v, w;
-	node (int vi, int wi) {
-		v = vi;
-		w = wi;
-	}
 };
 vector <node> g[N];
 queue <int> q;
 int num[N], inq[N], d[N];
-bool SPFA () {
+bool spfa () {
 	memset (d, 0x3f, sizeof(d));
 	d[1] = 0;
 	q.push(1);
@@ -47,9 +43,9 @@ int main() {
 	int x, y, z;
 	for (int i = 1; i <= m; i++) {
 		scanf ("%d%d%d", &x, &y, &z);
-		g[x].push_back(node(y, z));
+		g[x].push_back((node){y, z});
 	}
-	bool tmp = SPFA();
+	bool tmp = spfa();
 	if (tmp) {
 		printf ("%d\n", d[n]);
 	} else {
